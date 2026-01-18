@@ -1,0 +1,307 @@
+* {
+
+  margin: 0;
+  padding: 0;
+ font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.header-container{
+  width: 100%;
+  min-height: 4rem;
+  background-color: burlywood;
+ 
+}
+
+.header-content{
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+
+.ul-lista-enlaces{
+  display:flex;
+  flex-direction:row;
+  list-style: none;
+  gap:5.0rem;
+  margin: 20px;
+  
+
+}
+
+.nav-enlace, .active-link{
+  text-decoration: none;
+   font-size: large;
+   cursor: pointer;
+}
+
+.nav-enlace{
+  color: black;
+}
+
+.nav-enlace:hover{
+  
+  color: white;
+}
+
+.nav-enlace:focus{
+   outline: 2px solid blue;
+    outline-offset: 3px;
+}
+
+.active-link{
+  color: blue;
+}
+
+.div-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+  width: 35%;
+  align-items: center;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 5px;
+
+}
+
+label{
+  font-size: large;
+}
+input, label{
+  width: 50%;
+  border:0;
+  border-radius: 10px;
+  padding:10px;
+  margin-left: 10px;
+}
+
+
+.btn-enviar, .btn-fill{
+
+ width: 100%;
+ padding: 10px;
+ border: 0;
+ border-radius: 20px;
+ font-size: 15px;
+ margin-top: 20px;
+ background-color: green;
+ color: white;
+ margin: 10px;
+}
+
+.btn-fill{
+  background-color: blueviolet;
+}
+.container-btns-fill{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mensajeError{
+  color: red;
+  font-size: large;
+  font-weight: bold;
+}
+
+.container-gallery{
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-img , .api-img{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+ 
+
+}
+
+img{
+  margin: 10px;
+  width: 20%;
+  height: auto;
+}
+
+
+/*Estilos menú hamburguesa*/
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  transition: all 0.3s ease;
+}
+
+/* Asegura que el botón sea visible para el foco del teclado */
+.hamburger:focus {
+  outline: 3px solid blue;
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+
+  /* Reset general para evitar desbordes */
+  body {
+    overflow-x: hidden; 
+  }
+/* Permitimos que el header crezca según el contenido */
+
+  .header-content{
+   
+    flex-direction: row; /* En móvil, logo y hamburguesa van en fila */
+    justify-content: space-between;
+    padding: 0 15px;
+    height: 4rem;
+  }
+.nav-enlace, .active-link{
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+    /* Mejora del indicador visual de página activa */
+.active-link {
+  font-weight: bold;
+  border-bottom: 2px solid blue;
+}
+  /*Permitimos que la galería use todo el ancho disponible */
+  .container-img, .api-img{
+    max-width: 100%; 
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  /* Aseguramos que las fotos no excedan el ancho del móvil */
+  img{
+  
+   width: 50%; 
+    height: auto;
+  }
+
+  input,
+  label {
+    width: 100%;
+    margin-left: 0;
+    font-size: 0.9rem;
+  }
+
+  /*100% a veces toca los bordes, 90% deja aire */
+   form {
+   
+    margin: 0;
+    padding: 5px;
+    
+    
+  }
+
+  .ul-lista-enlaces {
+    display: none;
+    visibility: hidden; /*Doble capa de seguridad para accesibilidad*/
+    flex-direction: column;
+    top: 4rem;
+    left: 0;
+    margin:0;
+    padding: 20px;
+    align-items: center; 
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    background-color: burlywood;
+   
+  }
+
+  /* Clase que se activa con el estado de React */
+  .ul-lista-enlaces.open {
+    display: flex !important;
+    visibility: visible;
+  }
+
+  .btn-fill, .btn-enviar{
+    font-size: small;
+    width: 100%;
+  
+  }
+
+
+  .hamburger {
+    display: flex; /* Mostrar solo en móvil */
+   z-index: 1100;
+  }
+ 
+  /* Animación de la "X" al abrir */
+  .hamburger.is-active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.is-active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.is-active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+}
+
+@media (min-width:600px) {
+    form {
+    width: 50%;
+  }
+
+   input,
+  label {
+    width: 100%;
+    margin-left: 0;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width:1200px) {
+    form {
+    width: 50%;
+  }
+
+   input,
+  label {
+    width: 50%;
+    margin-left: 0;
+    font-size: 0.9rem;
+  }
+}
+
+
